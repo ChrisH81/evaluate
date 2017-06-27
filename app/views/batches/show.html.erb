@@ -20,6 +20,7 @@
   <% else %>
     <p>There are no students for this batch</p>
   <% end %>
+  <p> <%= link_to 'New Student', new_batch_student_path(@batch, @student), :class => 'btn btn-primary' %></p>
 </div>
 
 <%= link_to 'Edit', edit_batch_path(@batch) %> |

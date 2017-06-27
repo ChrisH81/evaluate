@@ -3,8 +3,8 @@
     <% @batch.students.each do |student| %>
       <tr>
         <td><%= image_tag student.image, :size => "150x150" %></td>
-        <td><%= link_to student.first_name, student_path(student.id) %></td>
-        <td> <%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-primary' %></td>
+        <td><%= link_to student.first_name, batch_student_path(@batch, student) %></td>
+        <td> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-primary' %></td>
       </tr>
     <% end %>
   </tbody>
