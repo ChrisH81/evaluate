@@ -15,5 +15,14 @@
   <%= @batch.end_date %>
 </p>
 
+<div class = "list_container">
+  <h3>Students For This Batch</h3>
+  <% if @batch.students.any?  %>
+  <%= render 'batch_students' %>
+  <% else %>
+    <p>There are no students for this batch</p>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_batch_path(@batch) %> |
 <%= link_to 'Back', batches_path %>
