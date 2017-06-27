@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= link_to @batch.name, batch_path(@batch) %>
+</p>
+
+<hr>
+
+<p>
+  <%= image_tag @student.image, :size => "150x150" %>
+</p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @student.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @student.last_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
