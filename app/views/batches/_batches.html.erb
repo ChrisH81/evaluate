@@ -1,0 +1,9 @@
+<% @batches.each do |batch| %>
+    <div class='batches'>
+    <p><%= batch.name %></p>
+    <p>Starts: <%= batch.start_date %></p>
+    <p>Ends: <%= batch.end_date %></p>
+    <p><%= link_to 'Show', batch %></p>
+    <p><%= link_to 'Remove Batch', batch, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_evaluation btn btn-danger' %></p>
+  </div>
+<% end %>

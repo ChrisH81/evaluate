@@ -1,27 +1,30 @@
 <h1>Batches</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'batches' %>
 
-  <tbody>
-    <% @batches.each do |batch| %>
-      <tr>
-        <td><%= batch.name %></td>
-        <td><%= batch.start_date %></td>
-        <td><%= batch.end_date %></td>
-        <td><%= link_to 'Show', batch %></td>
-        <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<br>
+
+<%= form_for(Batch.new) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :batch_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date, id: :batch_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date, id: :batch_end_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <br>
 

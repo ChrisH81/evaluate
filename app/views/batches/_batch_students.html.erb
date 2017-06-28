@@ -1,11 +1,14 @@
 <table>
   <tbody>
     <% @batch.students.each do |student| %>
-      <tr>
-        <td><%= image_tag student.image, :size => "150x150" %></td>
-        <td><%= link_to student.first_name, batch_student_path(@batch, student) %></td>
-        <td> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-primary' %></td>
-      </tr>
+      <div class='students'>
+        <p><%= image_tag student.image, :size => "150x150" %></p>
+        <p>
+          <%= link_to student.first_name, batch_student_path(@batch, student) %>
+          <%= link_to student.last_name, batch_student_path(@batch, student) %>
+        </p>
+        <p> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-danger' %></p>
+      </div>
     <% end %>
   </tbody>
 </table>
