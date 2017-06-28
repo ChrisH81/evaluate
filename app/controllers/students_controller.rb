@@ -9,6 +9,7 @@ class StudentsController < ApplicationController
   def show
   @student = Student.find(params[:id])
   @batch = Batch.find(@student.batch_id)
+
   end
 
   def new
@@ -21,7 +22,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     @student.batch_id = @batch.id
-  
+
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student.batch, notice: 'Student was successfully created.' }
@@ -57,6 +58,10 @@ class StudentsController < ApplicationController
 
   def set_student
     @student = Student.find(params[:id])
+  end
+
+  def set_evalution
+    @evalution = Evalution.find(params[:id])
   end
 
   def set_batch
