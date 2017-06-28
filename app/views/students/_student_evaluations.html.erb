@@ -11,4 +11,19 @@
             <%= link_to 'Edit', edit_student_evaluation_path(@student, evaluation), :class => 'edit_evaluation btn btn-warning' %></p>
           </div>
         </div>
+        <div>The score <%= evaluation.score %> </div>
+
     <% end %>
+
+      <br>
+      <p>The mean average of all evaluations from this student =</p>
+      <p><%= @student.average_score %></p>
+      <% if @student.average_score.round == 1%>
+      <div class="label label-danger"><%= "Bad" %> </div></p>
+      <% elsif @student.average_score.round == 2%>
+      <div class="label label-warning"><%= "OK" %> </div></p>
+      <% elsif @student.average_score.round == 3%>
+      <div class="label label-success"><%= "Good" %> </div></p>
+      <% else %>
+      <div class="label label-primary"><%= "No Score" %> </div></p>
+      <% end %>
