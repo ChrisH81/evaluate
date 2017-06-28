@@ -23,3 +23,22 @@
   background-color: rgba(183, 228, 138, 0.5);
   box-shadow: 3px 5px 12px 1px #888;
 }
+
+// Class change based on evaluation color input
+.e1 {
+  border-radius: 8px;
+  color: red;
+  background-color: red;
+}
+
+.e2 {
+  border-radius: 8px;
+  color: yellow;
+  background-color: yellow;
+}
+
+.e3 {
+  border-radius: 8px;
+  color: green;
+  background-color: green;
+}

@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :score %>
-    <%= form.text_field :score, id: :evaluation_score %>
+<%= form.radio_button(:score, "1") %>
+<%= form.label(:score, "Red") %>
+<%= form.radio_button(:score, "2") %>
+<%= form.label(:score, "Yellow") %>
+<%= form.radio_button(:score, "3") %>
+<%= form.label(:score, "Green") %>
   </div>
 
   <div class="field">

@@ -1,11 +1,11 @@
 
     <% @student.evaluations.each do |evaluation| %>
-        <div class='panel panel-success score'>
+        <div class='panel panel-success score evaluated'>
           <div class="panel-heading">
             <h3 class="panel-title"><%= evaluation.date %></h3>
           </div>
           <div class="panel-body">
-            <p><%= evaluation.score %></p>
+            <p class="e<%= evaluation.score %>"><%= evaluation.score %></p>
             <p><%= evaluation.comment %></p>
             <p> <%= link_to 'Remove', student_evaluation_path(@student, evaluation), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_evaluation btn btn-danger' %>
             <%= link_to 'Edit', edit_student_evaluation_path(@student, evaluation), :class => 'edit_evaluation btn btn-warning' %></p>
