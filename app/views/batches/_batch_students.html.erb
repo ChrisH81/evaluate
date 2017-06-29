@@ -1,11 +1,38 @@
 <table>
   <tbody>
     <% @batch.students.each do |student| %>
-      <tr>
-        <td><%= image_tag student.image, :size => "150x150" %></td>
-        <td><%= link_to student.first_name, batch_student_path(@batch, student) %></td>
-        <td> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-primary' %></td>
-      </tr>
+      <div class='students'>
+        <%= link_to batch_student_path(@batch, student) do %>
+          <p><%= image_tag student.image, :size => "150x150" %></p>
+        <% end %>
+        <p>
+          <%= link_to student.first_name, batch_student_path(@batch, student) %>
+          <%= link_to student.last_name, batch_student_path(@batch, student) %>
+        </p>
+        <% if student.average_score == nil %>
+        <div class="label label-primary"><%= "No Score" %> </div>
+        <% elsif student.average_score.round == 1 %>
+        <div class="label label-danger"><%= "Bad" %> </div>
+        <% elsif student.average_score.round == 2%>
+        <div class="label label-warning"><%= "OK" %> </div>
+        <% elsif student.average_score.round == 3%>
+        <div class="label label-success"><%= "Good" %> </div>
+        <% else %>
+        <div class="label label-danger"><%= "Unknown" %> </div>
+        <% end %>
+
+        <br>
+        <br>
+
+        <p> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-danger' %></p>
+      </div>
+
+
+
+      <!-- trying to add last student score -->
+      <!-- <p><%= student.evaluations.last %></p> -->
+
     <% end %>
+
   </tbody>
 </table>
