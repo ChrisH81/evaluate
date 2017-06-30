@@ -3,8 +3,4 @@ class Batch < ApplicationRecord
 
 
   default_scope { order(start_date: :asc) }
-
-  def average_score
-    evaluations.average_score
-  end
 end

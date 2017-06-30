@@ -1,39 +1,39 @@
-
-    <% @student.evaluations.each do |evaluation| %>
-        <div class='panel panel-success score evaluated'>
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= evaluation.date %></h3>
-          </div>
-          <div class="panel-body">
-            <p class="e<%= evaluation.score %>"><%= evaluation.score %></p>
-            <p><%= evaluation.comment %></p>
-            <p> <%= link_to 'Remove', student_evaluation_path(@student, evaluation), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_evaluation btn btn-danger' %>
-            <%= link_to 'Edit', edit_student_evaluation_path(@student, evaluation), :class => 'edit_evaluation btn btn-warning' %></p>
-          </div>
-        </div>
+<% @student.evaluations.each do |evaluation| %>
+  <div class='panel panel-success score evaluated'>
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= evaluation.date %></h3>
+    </div>
+    <div class="panel-body">
+      <p class="e<%= evaluation.score %>"><%= evaluation.score %></p>
+      <p><%= evaluation.comment %></p>
+      <p> <%= link_to 'Remove', student_evaluation_path(@student, evaluation), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_evaluation btn btn-danger' %>
+      <%= link_to 'Edit', edit_student_evaluation_path(@student, evaluation), :class => 'edit_evaluation btn btn-warning' %></p>
+    </div>
+  </div>
 
       <!--  To show the number for each evaluation -->
-        <div>The score <%= evaluation.score %> </div>
+        <!-- <div>The score <%= evaluation.score %> </div> -->
+<% end %>
 
+<br>
 
-    <% end %>
-    
-      <br>
+    <!--   Demonstrate the calculation -->
+   <!-- <p>The mean average of all evaluations from this student =</p>
+  <p><%= @student.average_score %></p> -->
 
+  <!-- How to score a student based on their mean average -->
 
-       <p>The mean average of all evaluations from this student =</p>
-      <p><%= @student.average_score %></p>
-
-      <!-- How to score a student based on their mean average -->
-      <% if @student.average_score.round == 1%>
-      <div class="label label-danger"><%= "Bad" %> </div>
-      <% elsif @student.average_score.round == 2%>
-      <div class="label label-warning"><%= "OK" %> </div>
-      <% elsif @student.average_score.round == 3%>
-      <div class="label label-success"><%= "Good" %> </div>
-      <% else %>
-      <div class="label label-primary"><%= "No Score" %> </div>
-      <% end %>
-
-      <br>
-      <br>
+<div class="score_box">
+Average Score:
+  <% if @student.average_score.round == 1%>
+    <div class="label label-danger"><%= "Bad" %> </div>
+  <% elsif @student.average_score.round == 2%>
+    <div class="label label-warning"><%= "OK" %> </div>
+  <% elsif @student.average_score.round == 3%>
+    <div class="label label-success"><%= "Good" %> </div>
+  <% else %>
+    <div class="label label-primary"><%= "No Score" %> </div>
+  <% end %>
+</div>
+<br>
+<br>

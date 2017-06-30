@@ -1,31 +1,28 @@
-<table>
-  <tbody>
+
     <% @batch.students.each do |student| %>
-      <div class='students'>
+      <div class='box_style'>
         <%= link_to batch_student_path(@batch, student) do %>
-          <p><%= image_tag student.image, :size => "150x150" %></p>
+          <p><%= image_tag student.image, :size => "175x200", :class => 'student_image' %></p>
         <% end %>
-        <p>
-          <%= link_to student.first_name, batch_student_path(@batch, student) %>
-          <%= link_to student.last_name, batch_student_path(@batch, student) %>
-        </p>
-        <% if student.average_score == nil %>
-        <div class="label label-primary"><%= "No Score" %> </div>
-        <% elsif student.average_score.round == 1 %>
-        <div class="label label-danger"><%= "Bad" %> </div>
-        <% elsif student.average_score.round == 2%>
-        <div class="label label-warning"><%= "OK" %> </div>
-        <% elsif student.average_score.round == 3%>
-        <div class="label label-success"><%= "Good" %> </div>
-        <% else %>
-        <div class="label label-danger"><%= "Unknown" %> </div>
-        <% end %>
+
+
+      <% if student.average_score == nil %>
+        <div class="label label-primary"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
+      <% elsif student.average_score.round == 1 %>
+        <div class="label label-danger"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
+      <% elsif student.average_score.round == 2%>
+        <div class="label label-warning"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
+      <% elsif student.average_score.round == 3%>
+        <div class="label label-success"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
+      <% else %>
+        <div class="label label-danger"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
+      <% end %>
 
         <br>
         <br>
 
-        <p> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn btn-danger' %></p>
-      </div>
+        <p class='center'> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn-sm btn-danger' %></p>
+    </div>
 
 
 
@@ -33,6 +30,3 @@
       <!-- <p><%= student.evaluations.last %></p> -->
 
     <% end %>
-
-  </tbody>
-</table>

@@ -3,8 +3,8 @@
 <%= render 'batches' %>
 
 <br>
-<hr>
 
+<div class="box_style batch_create">
 <%= form_for(Batch.new) do |form| %>
 
   <div class="field">
@@ -26,3 +26,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

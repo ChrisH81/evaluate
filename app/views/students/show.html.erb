@@ -1,31 +1,15 @@
-<div class="progress">
-  <div class="progress-bar progress-bar-striped active progress-bar-success" style="width: 35%">
-    <span class="sr-only">35% Complete (success)</span>
-  </div>
-  <div class="progress-bar progress-bar-striped active progress-bar-warning progress-bar-striped" style="width: 20%">
-    <span class="sr-only">20% Complete (warning)</span>
-  </div>
-  <div class="progress-bar progress-bar-striped active progress-bar-danger" style="width: 45%">
-    <span class="sr-only">45% Complete (danger)</span>
-  </div>
-</div>
-
-<hr>
-
+<div class="box_style">
 <p>
-  <%= image_tag @student.image, :size => "150x150" %>
+  <%= image_tag @student.image, :size => "175x200", :class => 'student_image' %>
 </p>
-
 <p>
   <strong>Name:</strong>
   <%= @student.first_name %> <%= @student.last_name %>
 </p>
-
 <p>
-  <strong>Batch:</strong>
   <%= link_to @batch.name, batch_path(@batch) %>
 </p>
-
+</div>
 <hr>
 
 <div class = "list_container">
@@ -35,8 +19,8 @@
   <% else %>
     <p>There are no evaluations for this student</p>
   <% end %>
-  <p> <%= link_to 'New Evaluation', new_student_evaluation_path(@student, @evaluation), :class => 'btn btn-primary' %></p>
+  <p> <%= link_to 'New Evaluation', new_student_evaluation_path(@student, @evaluation), :class => 'btn btn-success' %></p>
 </div>
 
-<%= link_to 'Edit', edit_batch_student_path(@batch, @student) %> |
-<%= link_to 'Back', @batch %>
+<%= link_to 'Edit', edit_batch_student_path(@batch, @student), :class => 'btn btn-primary' %>
+<%= link_to 'Back', @batch, :class => 'btn btn-primary' %>
