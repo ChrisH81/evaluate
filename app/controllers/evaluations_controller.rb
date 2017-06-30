@@ -2,9 +2,6 @@ class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
   before_action :set_student
 
-  def index
-    @evaluations = Evaluation.all
-  end
 
   def show
   @evaluation = Evaluation.find(params[:id])
@@ -25,10 +22,8 @@ class EvaluationsController < ApplicationController
     respond_to do |format|
       if @evaluation.save
         format.html { redirect_to @evaluation.student.batch, notice: 'Evaluation was successfully created.' }
-        format.json { render :show, status: :created, location: @evaluation }
       else
         format.html { render :new }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,11 +31,9 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        format.html { redirect_to @evaluation.student.batch, notice: 'Student was successfully updated.' }
-        format.json { render :show, status: :ok, location: @evaluation }
+        format.html { redirect_to @student.batch, notice: 'Student was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,7 +42,6 @@ class EvaluationsController < ApplicationController
     @evaluation.destroy
     respond_to do |format|
       format.html { redirect_to @evaluation.student.batch, notice: 'Evaluation was successfully removed.' }
-      format.json { head :no_content }
     end
   end
 

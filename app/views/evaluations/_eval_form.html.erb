@@ -10,27 +10,29 @@
       </ul>
     </div>
   <% end %>
+  <div class="box_style batch_create">
+    <div class="field">
+      <%= form.radio_button(:score, 1) %>
+      <%= form.label(:score, "Red") %>
+      <%= form.radio_button(:score, 2) %>
+      <%= form.label(:score, "Yellow") %>
+      <%= form.radio_button(:score, 3) %>
+      <%= form.label(:score, "Green") %>
+    </div>
 
-  <div class="field">
-<%= form.radio_button(:score, "1") %>
-<%= form.label(:score, "Red") %>
-<%= form.radio_button(:score, "2") %>
-<%= form.label(:score, "Yellow") %>
-<%= form.radio_button(:score, "3") %>
-<%= form.label(:score, "Green") %>
-  </div>
+    <div class="field">
+      <%= form.label :comment %>
+      <br>
+      <%= form.text_area :comment, id: :evaluation_comment %>
+    </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, id: :evaluation_comment %>
-  </div>
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_select :date, id: :evaluation_date %>
+    </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date, id: :evaluation_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>

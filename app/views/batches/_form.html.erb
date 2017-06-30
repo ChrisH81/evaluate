@@ -11,22 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :batch_name %>
-  </div>
+  <div class="box_style batch_create">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :batch_name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :batch_start_date %>
-  </div>
+    <div class="field">
+      <%= form.label :start_date %>
+      <%= form.date_select :start_date, id: :batch_start_date %>
+    </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :batch_end_date %>
-  </div>
+    <div class="field">
+      <%= form.label :end_date %>
+      <%= form.date_select :end_date, id: :batch_end_date %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>

@@ -1,27 +1,95 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+// style extras for animated box shadow
+$defaultDuration: .3s;
+
+@mixin hideTapHighlightColor() {
+	//Prevent highlight colour when element is tapped
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin hardwareAccel() {
+	//Improve performance on mobile/tablet devices
+	transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+	//Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
 .score {
   display: inline-block;
   margin: 0 15px 15px 0;
   background-color: rgba(183, 228, 138, 0.1);
   box-shadow: 3px 5px 12px #888;
+  transition-duration: $defaultDuration;
+	transition-property: box-shadow;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		box-shadow: 3px 5px 12px 1px #888;
+	}
 }
 
-.students {
+.standard_box {
   display: inline-block;
   padding: 5px 10px 0 10px;
   margin: 0 15px 15px 0;
+  border-radius: 7px;
   background-color: rgba(183, 228, 138, 0.5);
-  box-shadow: 3px 5px 12px 1px #888;
 }
 
-.batches {
+.score_box {
+	display: inline-block;
+	padding: 5px 8px 7px 10px;
+	border-radius: 7px;
+	background-color: rgba(183, 228, 138, 0.5);
+}
+
+.box_style {
   display: inline-block;
   padding: 5px 10px 0 10px;
   margin: 0 15px 15px 0;
+  border-radius: 7px;
   background-color: rgba(183, 228, 138, 0.5);
-  box-shadow: 3px 5px 12px 1px #888;
+	transition-duration: $defaultDuration;
+	transition-property: box-shadow;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		box-shadow: 3px 5px 12px 1px #888;
+	}
+}
+
+//student box text style
+.studenttext {
+	color: white;
+  text-decoration: none;
+}
+
+//student box image style
+.student_image {
+  border-radius: 5px;
+}
+
+// form styling
+.field {
+  padding:0 0 5px 0;
+}
+
+// batch create form styling
+.batch_create {
+  padding: 10px;
+  border-radius: 7px;
 }
 
 // Class change based on evaluation color input
@@ -41,4 +109,96 @@
   border-radius: 8px;
   color: green;
   background-color: green;
+}
+
+
+
+// Navbar styling
+// shadow for navbar
+.navbar-custom {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+// style for navbar
+$bgDefault      : #d32f2f;
+$bgHighlight    : #c0392b;
+$colDefault     : #ffffff;
+$colHighlight   : #dddcdc;
+$dropDown       : true;
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight; }}
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li {
+            > a {
+              color: $colDefault;
+              &:hover,  &:focus {
+                color: $colHighlight;
+                background-color: $bgHighlight; }}
+            > .divider {
+              background-color: $bgHighlight;}}}}}
+    @if $dropDown {
+      .open .dropdown-menu > .active {
+        > a, > a:hover, > a:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight; }}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .item {
+    height: 300px;
+  }
+}
+
+// make sure divider doesn't go into dropdown when on smaller screens
+@media (min-width: 768px){
+  .divider-vertical {
+  height: 30px;
+  margin: 10px 9px;
+  border-left: 1px solid #F2F2F2;
+  border-right: 1px solid #FFF;
+ }
 }

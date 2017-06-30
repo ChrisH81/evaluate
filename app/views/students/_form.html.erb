@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :student_first_name %>
-  </div>
+  <div class="box_style batch_create">
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, id: :student_first_name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :student_last_name %>
-  </div>
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, id: :student_last_name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image, id: :student_image %>
-  </div>
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.text_field :image, id: :student_image %>
+    </div>
 
-  <div class="selection">
-    <%= form.label :batch_id %>
-    <%= form.collection_select(:batch_id, Batch.all, :id, :name) %>
-  </div>
+    <div class="selection">
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <%= hidden_field(:batch_id, :id) %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    </div>
 <% end %>
