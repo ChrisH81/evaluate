@@ -1,21 +1,21 @@
 <div class="box_style">
-<p>
-  <%= image_tag @student.image, :size => "175x200", :class => 'student_image' %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @student.first_name %> <%= @student.last_name %>
-</p>
-<p>
-  <%= link_to @batch.name, batch_path(@batch) %>
-</p>
+  <p>
+    <%= image_tag @student.image, :size => "175x200", :class => 'student_image' %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= @student.first_name %> <%= @student.last_name %>
+  </p>
+  <p>
+    <%= link_to @batch.name, batch_path(@batch) %>
+  </p>
 </div>
 <hr>
 
 <div class = "list_container">
   <h3>Evaluations For This Student</h3>
   <% if @student.evaluations.any?  %>
-  <%= render 'student_evaluations' %>
+    <%= render 'student_evaluations' %>
   <% else %>
     <p>There are no evaluations for this student</p>
   <% end %>
