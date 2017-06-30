@@ -1,32 +1,37 @@
-
-    <% @batch.students.each do |student| %>
-      <div class='box_style'>
-        <%= link_to batch_student_path(@batch, student) do %>
-          <p><%= image_tag student.image, :size => "175x200", :class => 'student_image' %></p>
-        <% end %>
-
-
-      <% if student.average_score == nil %>
-        <div class="label label-primary"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
-      <% elsif student.average_score.round == 1 %>
-        <div class="label label-danger"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
-      <% elsif student.average_score.round == 2%>
-        <div class="label label-warning"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
-      <% elsif student.average_score.round == 3%>
-        <div class="label label-success"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
-      <% else %>
-        <div class="label label-danger"><%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %></div>
-      <% end %>
-
-        <br>
-        <br>
-
-        <p class='center'> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn-sm btn-danger' %></p>
-    </div>
-
-
-
-      <!-- trying to add last student score -->
-      <!-- <p><%= student.evaluations.last %></p> -->
-
+<% @batch.students.each do |student| %>
+  <div class='box_style'>
+    <%= link_to batch_student_path(@batch, student) do %>
+      <p><%= image_tag student.image, :size => "175x200", :class => 'student_image' %></p>
     <% end %>
+
+    <% if student.average_score == nil %>
+      <div class="label label-primary">
+        <%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %>
+      </div>
+    <% elsif student.average_score.round == 1 %>
+      <div class="label label-danger">
+        <%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %>
+      </div>
+    <% elsif student.average_score.round == 2%>
+      <div class="label label-warning">
+        <%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %>
+      </div>
+    <% elsif student.average_score.round == 3%>
+      <div class="label label-success">
+        <%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %>
+      </div>
+    <% else %>
+      <div class="label label-danger">
+        <%= link_to student.first_name, batch_student_path(@batch, student), :class => 'studenttext' %> <%= link_to student.last_name, batch_student_path(@batch, student), :class => 'studenttext' %>
+      </div>
+    <% end %>
+
+      <br>
+      <br>
+
+    <p> <%= link_to 'Remove Student', batch_student_path(@batch, student), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_student btn-sm btn-danger' %></p>
+  </div>
+
+<!-- trying to add last student score -->
+<!-- <p><%= student.evaluations.last %></p> -->
+<% end %>

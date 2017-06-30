@@ -4,9 +4,9 @@
       <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
 
       <ul>
-      <% student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -35,5 +35,5 @@
     <div class="actions">
       <%= form.submit %>
     </div>
-    </div>
+  </div>
 <% end %>

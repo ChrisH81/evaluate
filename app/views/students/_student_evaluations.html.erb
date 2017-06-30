@@ -12,19 +12,19 @@
   </div>
 
       <!--  To show the number for each evaluation -->
-        <!-- <div>The score <%= evaluation.score %> </div> -->
+      <!-- <div>The score <%= evaluation.score %> </div> -->
 <% end %>
 
 <br>
 
-    <!--   Demonstrate the calculation -->
-   <!-- <p>The mean average of all evaluations from this student =</p>
+  <!--   Demonstrate the calculation -->
+  <!-- <p>The mean average of all evaluations from this student =</p>
   <p><%= @student.average_score %></p> -->
 
   <!-- How to score a student based on their mean average -->
 
 <div class="score_box">
-Average Score:
+  Average Score:
   <% if @student.average_score.round == 1%>
     <div class="label label-danger"><%= "Bad" %> </div>
   <% elsif @student.average_score.round == 2%>
@@ -35,5 +35,6 @@ Average Score:
     <div class="label label-primary"><%= "No Score" %> </div>
   <% end %>
 </div>
+
 <br>
 <br>

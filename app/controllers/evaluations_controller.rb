@@ -2,12 +2,6 @@ class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
   before_action :set_student
 
-
-  def show
-  @evaluation = Evaluation.find(params[:id])
-  @student = Student.find(@evaluation.student_id)
-  end
-
   def new
     @evaluation = Evaluation.new
   end
