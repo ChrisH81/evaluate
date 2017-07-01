@@ -6,4 +6,7 @@ class Evaluation < ApplicationRecord
     average(:score)
   end
 
+
+
+
 end
